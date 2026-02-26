@@ -1,0 +1,1 @@
+.. BPMN workflow figure (SVG) + explanation
