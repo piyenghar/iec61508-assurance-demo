@@ -2,9 +2,9 @@
 IEC 61508 Assurance-as-Code Demo documentation
 ==============================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+.. Add your content using ``reStructuredText`` syntax. See the
+.. `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
+.. documentation for details.
 
 
 This site demonstrates a minimal, end-to-end IEC 61508 safety lifecycle thread for a SIL 2 Emergency Stop,
