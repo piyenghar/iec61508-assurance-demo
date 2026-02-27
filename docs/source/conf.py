@@ -116,7 +116,7 @@ release = "1.0"
 
 extensions = [
     "sphinx_needs",
-    #"sphinxcontrib.plantuml",
+    "sphinxcontrib.plantuml",
 ]
 
 templates_path = ["_templates"]
@@ -131,13 +131,24 @@ html_static_path = ["_static"]
 
 # Keep enabled for later diagrams. Configure ONE of the following when ready:
 # Option A: PlantUML jar (local)
-# plantuml = "java -jar ./tools/plantuml.jar"
+#plantuml = "java -jar ./tools/plantuml.jar"
+
+
+import os
+from pathlib import Path
+
+_THIS_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _THIS_DIR.parent.parent  # docs/source -> repo root
+_PLANTUML_JAR = _REPO_ROOT / "tools" / "plantuml" / "plantuml.jar"
+
+plantuml = f'java -jar "{_PLANTUML_JAR}"'
+plantuml_output_format = "png"
 #
 # Option B: PlantUML server
 # plantuml = "http://www.plantuml.com/plantuml"
 #
-plantuml = "http://www.plantuml.com/plantuml"
-plantuml_output_format = "svg"
+#plantuml = "http://www.plantuml.com/plantuml"
+#plantuml_output_format = "png"
 
 # -- Sphinx-Needs core behavior ---------------------------------------------
 

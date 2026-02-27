@@ -1,0 +1,41 @@
+@startuml
+
+' ===== Publication-grade styling =====
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam DefaultFontName Arial
+skinparam DefaultFontSize 13
+
+skinparam activity {
+  BackgroundColor #F5F7FA
+  BorderColor #2C3E50
+  FontColor #1A1A1A
+}
+
+skinparam ArrowColor #2C3E50
+skinparam ArrowThickness 1.2
+
+title IEC 61508 SIL 2 Emergency Stop Assurance Thread
+
+start
+
+:<<hazard>>\n**HAZ_ESTOP_01**\nHazard;
+:<<risk>>\n**RISK_ESTOP_01**\nRisk Assessment\n[ADDRESSES];
+:<<sil>>\n**SIL_ESTOP_01**\nSIL Allocation\n[ALLOCATES];
+:<<fsr>>\n**FSR_ESTOP_01**\nFunctional Safety Requirement\n[REFINES];
+:<<tsr>>\n**TSR_ESTOP_01**\nTechnical Safety Requirement\n[REFINES];
+:<<arch>>\n**ARCH_ESTOP_01**\nSafety Architecture\n[REALIZES];
+:<<verif>>\n**VERIF_ESTOP_01**\nVerification Activity\n[VERIFIES];
+:<<evidence>>\n**EVID_ESTOP_01**\nEvidence Artifact\n[EVIDENCES];
+:<<confirm>>\n**CONFIRM_ESTOP_01**\nConfirmation Measure\n[REVIEWS];
+
+stop
+
+legend right
+  Artefact IDs in bold
+  Link semantics shown in brackets
+  All relationships validated by Sphinx-Needs
+endlegend
+
+@enduml

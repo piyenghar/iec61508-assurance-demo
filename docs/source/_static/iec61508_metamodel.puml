@@ -1,19 +1,48 @@
-
 @startuml
-class Hazard
-class Risk
-class SIL
-class FSR
-class TSR
-class Arch
-class Verif
-class Evidence
-class Confirm
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 14
+skinparam DefaultFontName Arial
+skinparam DefaultFontSize 14
 
-Hazard --> FSR : mitigates
-FSR --> TSR : refines
-TSR --> Arch : realizes
-FSR --> Verif : verifies
-Verif --> Evidence : produces
-Confirm --> FSR : reviews
+skinparam class {
+  BackgroundColor #F7F7F7
+  BorderColor #222222
+  FontColor #111111
+}
+
+skinparam ArrowColor #222222
+skinparam classAttributeIconSize 0
+
+title Assurance artefact vocabulary (meta-model)\n(types + link semantics used for computed checks)
+
+' Keep a clean top-down vocabulary view
+top to bottom direction
+
+class Hazard <<hazard>>
+class RiskAssessment <<risk>>
+class SILAllocation <<sil>>
+class FSR <<fsr>>
+class TSR <<tsr>>
+class Architecture <<arch>>
+class Verification <<verif>>
+class Evidence <<evidence>>
+class Confirmation <<confirm>>
+
+RiskAssessment --> Hazard : **ADDRESSES**
+SILAllocation --> RiskAssessment : **ALLOCATES**
+FSR --> SILAllocation : **REFINES**
+TSR --> FSR : **REFINES**
+Architecture --> TSR : **REALIZES**
+Verification --> FSR : **VERIFIES**
+Evidence --> Verification : **EVIDENCES**
+Confirmation --> Evidence : **REVIEWS**
+
+legend left
+  **Meta-model meaning**
+  - Boxes = artefact *types* (Sphinx-Needs directives)
+  - Edges = allowed *link types* (validated + used in graphs)
+  - This vocabulary drives traceability views + lifecycle checks
+endlegend
+
 @enduml

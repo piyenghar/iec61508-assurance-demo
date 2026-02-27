@@ -94,6 +94,13 @@ Verification Activity
    :part_ref: IEC 61508-3 (Verification)
    :verifies: FSR_ESTOP_01
 
+.. the idea is that, on removing :verifies above, the gap is visible in two places
+.. 1. Traceability Views (03_traceability.html)
+.. Expected: an entry like “FSR_ESTOP_01 has no VERIF” (wording depends on your tables).
+
+.. 2. Lifecycle Checks (04_checks.html)
+.. Expected: a FAIL / warning / missing coverage related to verification
+
    Verification confirms the response time from Emergency Stop activation to output de-energization.
 
 Evidence
