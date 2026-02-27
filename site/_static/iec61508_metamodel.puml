@@ -1,0 +1,19 @@
+
+@startuml
+class Hazard
+class Risk
+class SIL
+class FSR
+class TSR
+class Arch
+class Verif
+class Evidence
+class Confirm
+
+Hazard --> FSR : mitigates
+FSR --> TSR : refines
+TSR --> Arch : realizes
+FSR --> Verif : verifies
+Verif --> Evidence : produces
+Confirm --> FSR : reviews
+@enduml
