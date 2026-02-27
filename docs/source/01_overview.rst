@@ -55,14 +55,23 @@ The figure below defines the assurance artifact vocabulary used in the demo.
    :caption: Assurance artefact meta-model (demo vocabulary).  This vocabulary is enforced during build; only these link types are used in computed trace graphs and completeness checks.
    :align: center
 
+
 Assurance Graph
------------------
+----------------
 
 .. needflow::
    :root_id: HAZ_ESTOP_01
-   :root_direction: outgoing
+   :root_direction: both
    :link_types: ADDRESSES,ALLOCATES,REFINES,REALIZES,VERIFIES,EVIDENCES,REVIEWS
    :types: hazard,risk,sil,fsr,tsr,arch,verif,evidence,confirm
    :show_link_names:
    :root_depth: 10
-   :alt: Assurance chain rooted at HAZ_ESTOP_01
+   :config: assurance_light
+
+
+
+
+
+
+
+

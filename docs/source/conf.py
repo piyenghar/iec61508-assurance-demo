@@ -154,6 +154,7 @@ plantuml_output_format = "png"
 
 needs_id_required = True
 needs_title_optional = False
+ 
 
 # If you want IDs with hyphens like EVID-PLAN-01, enable this:
 needs_id_regex = r"^[A-Z][A-Z0-9_-]{2,}$"
@@ -225,3 +226,30 @@ needs_links = {
 # Quality-of-life settings (optional)
 needs_table_style = "datatables"
 needs_show_link_type = True
+
+
+needs_flow_engine = "graphviz"
+
+needs_graphviz_styles = {
+    "assurance_light": {
+        "graph": {
+            "bgcolor": "white",
+        },
+        "node": {
+            "style": "filled,rounded",
+            "fillcolor": "#FFFFFF",
+            "color": "#555555",
+            "fontcolor": "#222222",
+        },
+        "edge": {
+            "color": "#777777",
+            "fontcolor": "#777777",
+        },
+    },
+}
+
+
+
+
+
+
