@@ -1,0 +1,4 @@
+sphinx>=7
+sphinx-needs>=2.0
+sphinx-book-theme>=1.1
+sphinxcontrib-plantuml>=0.25

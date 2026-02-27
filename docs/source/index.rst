@@ -1,7 +1,3 @@
-.. IEC 61508 Assurance-as-Code Demo documentation master file, created by
-   sphinx-quickstart on Thu Feb 26 22:15:47 2026.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 IEC 61508 Assurance-as-Code Demo documentation
 ==============================================
@@ -11,15 +7,17 @@ Add your content using ``reStructuredText`` syntax. See the
 documentation for details.
 
 
+This site demonstrates a minimal, end-to-end IEC 61508 safety lifecycle thread for a SIL 2 Emergency Stop,
+encoded as structured, traceable engineering artifacts using Sphinx and Sphinx-Needs.
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
 
    01_overview
-   05_metamodel
-   06_workflow
    02_artifacts
    03_traceability
-   07_needflow
    04_checks
-
+   05_metamodel
+   06_workflow
+   07_needflow

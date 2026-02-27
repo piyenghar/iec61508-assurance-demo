@@ -1,129 +1,122 @@
 .. the actual IEC 61508 artifacts as Sphinx-needs objects
 
-Artifacts
-=========
+Lifecycle Artifacts
+===================
 
-Concept Evidence
-----------------
+This section encodes a minimal IEC 61508 SIL 2 lifecycle thread for an Emergency Stop function
+as structured Sphinx-Needs artifacts.
 
-.. evidence:: Safety Plan Record
-   :id: EVID-PLAN-01
-   :phase: concept
-   :owner_role: safety_manager
-   :artifact_kind: plan_record
-   :part_ref: IEC61508-1
+Hazard
+------
 
-   Defines lifecycle planning and assigned responsibilities.
+.. hazard:: Emergency Stop does not remove hazardous energy
+   :id: HAZ_ESTOP_01
+   :phase: Hazard and Risk Analysis
+   :owner_role: Safety Engineer
+   :part_ref: IEC 61508-1 (Hazard and Risk Analysis)
 
-Hazard Identification
----------------------
-
-.. hazard:: Loss of emergency stop function
-   :id: HZ-01
-   :phase: hazard_risk
-   :sil_level: SIL2
-   :owner_role: safety_manager
-   :part_ref: IEC61508-1
-
-   Failure to remove actuator power in time.
+   If the Emergency Stop request is not effective, the machine may continue hazardous motion,
+   exposing personnel to injury.
 
 Risk Assessment
 ---------------
 
-.. risk:: Risk estimation for HZ-01
-   :id: RISK-01
-   :phase: hazard_risk
-   :sil_level: SIL2
-   :owner_role: safety_manager
-   :addresses: HZ-01
-   :part_ref: IEC61508-1
+.. risk:: Risk of injury due to ineffective Emergency Stop
+   :id: RISK_ESTOP_01
+   :phase: Hazard and Risk Analysis
+   :owner_role: Safety Engineer
+   :part_ref: IEC 61508-1 (Risk Assessment)
+   :addresses: HAZ_ESTOP_01
 
-   Risk requires SIL2 reduction.
+   Risk evaluation indicates that risk reduction is required for the Emergency Stop function.
 
 SIL Allocation
 --------------
 
-.. sil:: SIL2 allocation for E-stop
-   :id: SIL-01
-   :phase: hazard_risk
+.. sil:: SIL 2 allocated for Emergency Stop safety function
+   :id: SIL_ESTOP_01
+   :phase: Safety Function Allocation
+   :owner_role: Functional Safety Manager
    :sil_level: SIL2
-   :owner_role: safety_manager
-   :allocates: RISK-01
-   :part_ref: IEC61508-1
+   :part_ref: IEC 61508-1 (SIL Allocation)
+   :allocates: RISK_ESTOP_01
 
-   SIL2 justified by risk analysis.
+   Based on the risk assessment, the Emergency Stop safety function is allocated SIL 2.
 
 Functional Safety Requirement
 -----------------------------
 
-.. fsr:: E-stop shall remove power within 200 ms
-   :id: FSR-01
-   :phase: safety_requirements
+.. fsr:: Emergency Stop shall de-energize motor outputs within 100 ms
+   :id: FSR_ESTOP_01
+   :phase: Safety Requirements Specification
+   :owner_role: System Engineer
    :sil_level: SIL2
-   :owner_role: safety_manager
-   :mitigates: HZ-01
-   :part_ref: IEC61508-1
+   :part_ref: IEC 61508-2 (SRS)
+   :refines: SIL_ESTOP_01
 
-   Timing requirement for safety function.
+   When the Emergency Stop is activated, the system shall remove power from motor outputs
+   within 100 ms.
 
 Technical Safety Requirement
 ----------------------------
 
-.. tsr:: Dual-channel E-stop input with discrepancy monitoring
-   :id: TSR-01
-   :phase: design_realization
+.. tsr:: Dual-channel Emergency Stop input with discrepancy detection
+   :id: TSR_ESTOP_01
+   :phase: Safety Requirements Specification
+   :owner_role: Hardware Engineer
    :sil_level: SIL2
-   :owner_role: developer
-   :refines: FSR-01
-   :part_ref: IEC61508-2
+   :part_ref: IEC 61508-2 (SRS)
+   :refines: FSR_ESTOP_01
 
-   Hardware realization constraint.
+   The Emergency Stop shall be implemented with two independent input channels
+   and discrepancy detection to detect wiring or contact faults.
 
-Architecture
-------------
+Safety Architecture
+-------------------
 
-.. arch:: Safety relay with monitored inputs
-   :id: ARCH-01
-   :phase: design_realization
-   :sil_level: SIL2
-   :owner_role: developer
-   :realizes: TSR-01
-   :part_ref: IEC61508-2
+.. arch:: 1oo2 input evaluation and safety relay output stage
+   :id: ARCH_ESTOP_01
+   :phase: Architectural Design
+   :owner_role: System Architect
+   :part_ref: IEC 61508-2 (Architecture)
+   :realizes: TSR_ESTOP_01
 
-   Architecture for E-stop safety function.
+   The architecture evaluates both input channels and commands a safety relay / safe output stage
+   to remove motor power.
 
-Verification
-------------
+Verification Activity
+---------------------
 
-.. verif:: Measure E-stop response time
-   :id: VER-01
-   :phase: verification
-   :sil_level: SIL2
-   :owner_role: verifier
-   :verifies: FSR-01
-   :part_ref: IEC61508-3
+.. verif:: Measure Emergency Stop response time
+   :id: VERIF_ESTOP_01
+   :phase: Verification
+   :owner_role: Test Engineer
+   :part_ref: IEC 61508-3 (Verification)
+   :verifies: FSR_ESTOP_01
 
-   Bench test of response time.
+   Verification confirms the response time from Emergency Stop activation to output de-energization.
 
-.. evidence:: Test report for VER-01
-   :id: EVID-01
-   :phase: verification
-   :owner_role: verifier
-   :produces: VER-01
-   :artifact_kind: test_report
-   :part_ref: IEC61508-3
+Evidence
+--------
 
-   Measured response times documented.
+.. evidence:: Emergency Stop response time test report
+   :id: EVID_ESTOP_01
+   :phase: Verification Evidence
+   :owner_role: Test Engineer
+   :artifact_kind: Test Report
+   :evidences: VERIF_ESTOP_01
 
-Confirmation
-------------
+   Evidence artifact documenting the measured response time and acceptance criteria.
 
-.. confirm:: Independent review of safety requirements
-   :id: CM-01
-   :phase: safety_requirements
-   :sil_level: SIL2
-   :owner_role: assessor
-   :reviews: FSR-01
-   :part_ref: IEC61508-1
+Confirmation Measure
+--------------------
 
-   Confirms adequacy of safety requirements.
+.. confirm:: Independent review of SIL allocation and safety requirements
+   :id: CONF_ESTOP_01
+   :phase: Functional Safety Assessment
+   :owner_role: Independent Assessor
+   :part_ref: IEC 61508-1 (Confirmation Measures)
+   :reviews: SIL_ESTOP_01
+
+   Confirmation activity records independent review of the SIL allocation decision
+   and the derived safety requirements.
