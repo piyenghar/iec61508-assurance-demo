@@ -3,23 +3,44 @@
 Overview
 ========
 
-This demo shows how a minimal IEC 61508 safety lifecycle thread can be represented as structured,
-traceable engineering artifacts using Sphinx and Sphinx-Needs. The example thread models a SIL 2
-Emergency Stop safety function, from hazard and risk assessment through SIL allocation, requirements,
-architecture, verification, and evidence.
+This demo encodes a minimal IEC 61508 safety lifecycle thread for a SIL 2 
+Emergency Stop as structured, typed engineering artifacts using Sphinx and 
+Sphinx-Needs.
 
-Scope of the demo
------------------
+The example spans:
 
-The documentation contains a single, end-to-end lifecycle thread:
-
-- Hazard identification and risk assessment for an Emergency Stop function
-- SIL allocation (target: SIL 2)
+- Hazard and risk assessment
+- SIL allocation
 - Functional and technical safety requirements
-- A minimal safety architecture
-- Verification activities and linked evidence artifacts
-- Traceability views and lifecycle completeness checks
+- Safety architecture
+- Verification activities
+- Evidence artifacts
+- Confirmation measures
 
+Unlike conventional document-centric safety documentation, each lifecycle 
+element is represented as a typed object with explicitly declared relations. 
+Allowed artifact types and link semantics are constrained by a predefined 
+meta-model and validated at build time.
+
+Traceability graphs and lifecycle completeness checks are computed directly 
+from these declared relations. Missing structural links (e.g., requirement 
+without verification) are automatically detected.
+
+Scope
+-----
+
+This demonstration focuses strictly on structural lifecycle consistency.
+
+It does not evaluate:
+
+- Semantic correctness of hazard analysis
+- Quantitative SIL determination
+- Architectural metrics (e.g., HFT, SFF)
+- Probabilistic calculations
+- Full safety case argumentation
+
+The purpose is to demonstrate executable lifecycle structure and automated 
+traceability enforcement for a single SIL 2 thread.
 
 
 Meta-model
