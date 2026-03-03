@@ -20,6 +20,18 @@ The documentation contains a single, end-to-end lifecycle thread:
 - Verification activities and linked evidence artifacts
 - Traceability views and lifecycle completeness checks
 
+
+
+Meta-model
+-----------------
+
+The figure below defines the assurance artifact vocabulary used in the demo.
+
+.. uml:: _static/iec61508_metamodel.puml
+   :caption: Assurance artefact meta-model (demo vocabulary). This vocabulary is enforced during build; only these link types are used in computed trace graphs and completeness checks.
+   :align: center
+
+
 Workflow
 -----------------
 
@@ -28,7 +40,7 @@ This section describes the intended IEC 61508 lifecycle flow for the SIL 2 Emerg
 The figure below illustrates the workflow, showing the key assurance artifacts and their relationships.
 
 .. uml:: _static/iec61508_workflow.puml
-   :caption: IEC 61508 SIL 2 Emergency Stop assurance workflow.  IEC 61508 SIL 2 Emergency Stop assurance workflow. Each node corresponds to a Sphinx-Needs artefact ID; each edge label corresponds to a validated link type used to generate traceability views and checks.
+   :caption: IEC 61508 SIL 2 Emergency Stop assurance workflow. Each node corresponds to a Sphinx-Needs artefact ID; each edge label corresponds to a validated link type used to generate traceability views and checks.
    :align: center
 
 1. Hazard
@@ -42,19 +54,6 @@ The figure below illustrates the workflow, showing the key assurance artifacts a
 9. Confirmation measures
 
 Each node corresponds to a Sphinx-Needs artefact ID; each edge label corresponds to a validated link type used to generate traceability views and checks.
-
-
-.. UML meta-model figure (PlantUML)
-
-Meta-model
------------------
-
-The figure below defines the assurance artifact vocabulary used in the demo.
-
-.. uml:: _static/iec61508_metamodel.puml
-   :caption: Assurance artefact meta-model (demo vocabulary).  This vocabulary is enforced during build; only these link types are used in computed trace graphs and completeness checks.
-   :align: center
-
 
 Assurance Graph
 ----------------

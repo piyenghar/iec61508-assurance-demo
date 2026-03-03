@@ -169,3 +169,7 @@ cython_debug/
 #.idea/
 
 !site/
+
+# Local helper files
+docs/commands.txt
+tools/html_to_pdf.py

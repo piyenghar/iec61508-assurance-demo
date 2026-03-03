@@ -1,41 +1,38 @@
 @startuml
-
-' ===== Publication-grade styling =====
-skinparam backgroundColor white
+left to right direction
+hide stereotype
 skinparam shadowing false
-skinparam roundcorner 10
-skinparam DefaultFontName Arial
-skinparam DefaultFontSize 13
+skinparam RoundCorner 14
+skinparam ArrowThickness 1.3
+skinparam ArrowColor #2f2f2f
+skinparam defaultFontName Arial
+skinparam defaultFontSize 16
 
-skinparam activity {
-  BackgroundColor #F5F7FA
-  BorderColor #2C3E50
-  FontColor #1A1A1A
-}
+' --- Top Row: Core lifecycle ---
+rectangle "HAZ_ESTOP_01\nHazard" as HAZ #EAF2FF
+rectangle "RISK_ESTOP_01\nRisk [ADDRESSES]" as RISK #EAF2FF
+rectangle "SIL_ESTOP_01\nSIL [ALLOCATES]" as SIL #EAF2FF
+rectangle "FSR_ESTOP_01\nFSR [REFINES]" as FSR #EFE8FF
+rectangle "TSR_ESTOP_01\nTSR [REFINES]" as TSR #EFE8FF
+rectangle "ARCH_ESTOP_01\nArch [REALIZES]" as ARCH #E7F7EE
 
-skinparam ArrowColor #2C3E50
-skinparam ArrowThickness 1.2
+HAZ --> RISK
+RISK --> SIL
+SIL --> FSR
+FSR --> TSR
+TSR -down-> ARCH
 
-title IEC 61508 SIL 2 Emergency Stop Assurance Thread
+' --- Bottom Row: V&V + Confirmation (right → left) ---
+rectangle "VERIF_ESTOP_01\nVerif [VERIFIES]" as VERIF #FFF4D6
+rectangle "EVID_ESTOP_01\nEvidence [EVIDENCES]" as EVID #FFF4D6
+rectangle "CONFIRM_ESTOP_01\nConfirm [REVIEWS]" as CONF #FFE6EA
 
-start
+EVID -left-> VERIF
+VERIF -up-> FSR
+CONF -up-> SIL
 
-:<<hazard>>\n**HAZ_ESTOP_01**\nHazard;
-:<<risk>>\n**RISK_ESTOP_01**\nRisk Assessment\n[ADDRESSES];
-:<<sil>>\n**SIL_ESTOP_01**\nSIL Allocation\n[ALLOCATES];
-:<<fsr>>\n**FSR_ESTOP_01**\nFunctional Safety Requirement\n[REFINES];
-:<<tsr>>\n**TSR_ESTOP_01**\nTechnical Safety Requirement\n[REFINES];
-:<<arch>>\n**ARCH_ESTOP_01**\nSafety Architecture\n[REALIZES];
-:<<verif>>\n**VERIF_ESTOP_01**\nVerification Activity\n[VERIFIES];
-:<<evidence>>\n**EVID_ESTOP_01**\nEvidence Artifact\n[EVIDENCES];
-:<<confirm>>\n**CONFIRM_ESTOP_01**\nConfirmation Measure\n[REVIEWS];
-
-stop
-
-legend right
-  Artefact IDs in bold
-  Link semantics shown in brackets
-  All relationships validated by Sphinx-Needs
-endlegend
+' Alignment helpers
+CONF -[hidden]-> EVID
+VERIF -[hidden]-> ARCH
 
 @enduml

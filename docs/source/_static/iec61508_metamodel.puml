@@ -1,48 +1,83 @@
-@startuml
-skinparam backgroundColor #FFFFFF
+@startuml IEC61508MetaModel
+
+skinparam Dpi 300
+skinparam backgroundColor white
 skinparam shadowing false
-skinparam roundcorner 14
+skinparam roundcorner 6
 skinparam DefaultFontName Arial
-skinparam DefaultFontSize 14
+skinparam DefaultFontSize 12
+
+skinparam ArrowColor #1F2D3A
+skinparam ArrowThickness 1.4
+skinparam linetype ortho
+skinparam ArrowFontSize 10
+
+skinparam nodesep 65
+skinparam ranksep 50
+skinparam padding 10
+
+' Remove extra class compartments (those horizontal lines)
+
+' Make edge labels slightly smaller than box text (helps clutter)
+skinparam ArrowFontSize 10
 
 skinparam class {
-  BackgroundColor #F7F7F7
-  BorderColor #222222
+  BorderColor #1F2D3A
+  BorderThickness 1.4
   FontColor #111111
 }
 
-skinparam ArrowColor #222222
-skinparam classAttributeIconSize 0
+title Assurance artefact vocabulary (meta-model)
 
-title Assurance artefact vocabulary (meta-model)\n(types + link semantics used for computed checks)
+' --- Phase color coding ---
+class Hazard <<hazard>> #E8F1FB {
+  --
+}
 
-' Keep a clean top-down vocabulary view
-top to bottom direction
+class RiskAssessment <<risk>> #E8F1FB {
+  --
+}
 
-class Hazard <<hazard>>
-class RiskAssessment <<risk>>
-class SILAllocation <<sil>>
-class FSR <<fsr>>
-class TSR <<tsr>>
-class Architecture <<arch>>
-class Verification <<verif>>
-class Evidence <<evidence>>
-class Confirmation <<confirm>>
+class SILAllocation <<sil>> #E8F1FB {
+  --
+}
 
-RiskAssessment --> Hazard : **ADDRESSES**
-SILAllocation --> RiskAssessment : **ALLOCATES**
-FSR --> SILAllocation : **REFINES**
-TSR --> FSR : **REFINES**
-Architecture --> TSR : **REALIZES**
-Verification --> FSR : **VERIFIES**
-Evidence --> Verification : **EVIDENCES**
-Confirmation --> Evidence : **REVIEWS**
+class FSR <<fsr>> #EFE9FB {
+  --
+}
 
-legend left
-  **Meta-model meaning**
-  - Boxes = artefact *types* (Sphinx-Needs directives)
-  - Edges = allowed *link types* (validated + used in graphs)
-  - This vocabulary drives traceability views + lifecycle checks
-endlegend
+class TSR <<tsr>> #EFE9FB {
+  --
+}
+
+class Architecture <<arch>> #E9F7EF {
+  --
+}
+
+class Verification <<verif>> #FFF8E6 {
+  --
+}
+
+class Evidence <<evidence>> #FFF8E6 {
+  --
+}
+
+class Confirmation <<confirm>> #FDEDEC {
+  --
+}
+
+' --- Row 1 (left → right) ---
+Hazard         -right-> RiskAssessment : ADDRESSES
+RiskAssessment -right-> SILAllocation  : ALLOCATES
+SILAllocation  -right-> FSR            : REFINES
+FSR            -right-> TSR            : REFINES
+
+' --- Drop correctly ---
+TSR -down-> Architecture : REALIZES
+
+' --- Row 2 (right → left visual compacting; semantics preserved) ---
+Architecture -left-> Verification : VERIFIES
+Verification -left-> Evidence     : EVIDENCES
+Evidence     -left-> Confirmation : REVIEWS
 
 @enduml
