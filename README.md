@@ -12,7 +12,7 @@ For a quick overview without building the project, see:
 
 `docs/source/IEC_61508_Assurance_Demo.pdf`
 
-This PDF provides a static snapshot of the complete lifecycle thread.
+This PDF provides a static snapshot of the complete lifecycle thread. Please note that, this file is provided here to give a quick overview and is extracted from the generated html pages. 
 
 ---
 
@@ -41,7 +41,7 @@ docs/
 - sphinx-book-theme
 - sphinxcontrib-plantuml
 
-Install dependencies inside a virtual environment:
+For example, install dependencies inside a virtual environment:
 
 ```bash
 pip install sphinx sphinx-needs sphinx-book-theme sphinxcontrib-plantuml
