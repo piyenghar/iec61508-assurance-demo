@@ -63,19 +63,6 @@ docs/build/html/index.html
 
 in your browser.
 
----
-## Clean Rebuild
-
-Windows:
-```
-rmdir /s /q build
-```
-Linux/macOS:
-```
-rm -rf build
-```
-Then rebuild.
----
 
 ##Scope of the Demonstration
 
