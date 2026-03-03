@@ -64,7 +64,7 @@ docs/build/html/index.html
 in your browser.
 
 
-##Scope of the Demonstration
+## Scope of the Demonstration
 
 This demo focuses strictly on structural lifecycle consistency.
 
