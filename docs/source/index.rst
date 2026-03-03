@@ -6,6 +6,12 @@ IEC 61508 Assurance-as-Code Demo documentation
 .. `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
 .. documentation for details.
 
+.. rubric:: Document information
+
+:Project: IEC 61508 Assurance-as-Code Demo
+:Author: Dr. Padma Iyenghar /innotec GmbH-TÜV Austria Group
+:Copyright: © 2026 Dr. Padma Iyenghar/innotec GmbH-TÜV Austria Group
+:Version: 1.0
 
 This site demonstrates a minimal, end-to-end IEC 61508 safety lifecycle thread for a SIL 2 Emergency Stop,
 encoded as structured, traceable engineering artifacts using Sphinx and Sphinx-Needs.
