@@ -22,7 +22,7 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                         configName: "static_files-iecdemo",
-                        transfers: [sshTransfer(sourceFiles: 'docs/build/html/*')],
+                        transfers: [sshTransfer(sourceFiles: 'docs/build/html/**/*', removePrefix: 'docs/build/html')],
                         verbose: true
                         )
                     ]
