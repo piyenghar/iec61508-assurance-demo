@@ -1,0 +1,26 @@
+[project]
+name = "IEC61508-Assurance-Demo"
+version = "1.0"
+description = "IEC 61508 Assurance-as-Code Demo"
+authors = [
+    { name = "Dr. Padma Iyenghar", email = "padma.iyenghar@innotecsafety.com" }
+]
+requires-python = ">= 3.11"
+
+dependencies = [
+    "sphinx[test]>=8.2.3",
+    "sphinx-needs[plotting]>=6.1.0",
+    "sphinxcontrib-plantuml>=0.30",
+    "sphinx-book-theme"
+]
+readme = "README.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["docs/source"]

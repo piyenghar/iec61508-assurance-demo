@@ -141,8 +141,8 @@ _THIS_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _THIS_DIR.parent.parent  # docs/source -> repo root
 _PLANTUML_JAR = _REPO_ROOT / "tools" / "plantuml" / "plantuml.jar"
 
-plantuml = f'java -jar "{_PLANTUML_JAR}"'
-plantuml_output_format = "png"
+plantuml = f'java -Djava.awt.headless=true -jar "{_PLANTUML_JAR}"'
+plantuml_output_format = "svg_img"
 #
 # Option B: PlantUML server
 # plantuml = "http://www.plantuml.com/plantuml"
@@ -160,15 +160,15 @@ needs_title_optional = False
 needs_id_regex = r"^[A-Z][A-Z0-9_-]{2,}$"
 
 needs_types = [
-    {"directive": "hazard",   "title": "Hazard",                     "prefix": "HAZ_"},
-    {"directive": "risk",     "title": "Risk Assessment",            "prefix": "RISK_"},
-    {"directive": "sil",      "title": "SIL Allocation",             "prefix": "SIL_"},
-    {"directive": "fsr",      "title": "Functional Safety Requirement","prefix": "FSR_"},
-    {"directive": "tsr",      "title": "Technical Safety Requirement","prefix": "TSR_"},
-    {"directive": "arch",     "title": "Safety Architecture",        "prefix": "ARCH_"},
-    {"directive": "verif",    "title": "Verification Activity",      "prefix": "VERIF_"},
-    {"directive": "confirm",  "title": "Confirmation Measure",       "prefix": "CONF_"},
-    {"directive": "evidence", "title": "Evidence Artifact",          "prefix": "EVID_"},
+    {"directive": "hazard",   "title": "Hazard",                     "prefix": "HAZ_", "color":"#E8F1FB", "style":"node"},
+    {"directive": "risk",     "title": "Risk Assessment",            "prefix": "RISK_", "color":"#E8F1FB", "style":"node"},
+    {"directive": "sil",      "title": "SIL Allocation",             "prefix": "SIL_", "color":"#E8F1FB", "style":"node"},
+    {"directive": "fsr",      "title": "Functional Safety Requirement","prefix": "FSR_", "color":"#EFE9FB", "style":"node"},
+    {"directive": "tsr",      "title": "Technical Safety Requirement","prefix": "TSR_", "color":"#EFE9FB", "style":"node"},
+    {"directive": "arch",     "title": "Safety Architecture",        "prefix": "ARCH_", "color":"#E9F7EF", "style":"node"},
+    {"directive": "verif",    "title": "Verification Activity",      "prefix": "VERIF_", "color":"#FFF8E6", "style":"node"},
+    {"directive": "confirm",  "title": "Confirmation Measure",       "prefix": "CONF_", "color":"#FDEDEC", "style":"node"},
+    {"directive": "evidence", "title": "Evidence Artifact",          "prefix": "EVID_", "color":"#FFF8E6", "style":"node"},
 ]
 
 # Custom fields available for all needs
@@ -226,30 +226,5 @@ needs_links = {
 # Quality-of-life settings (optional)
 needs_table_style = "datatables"
 needs_show_link_type = True
-
-
-needs_flow_engine = "graphviz"
-
-needs_graphviz_styles = {
-    "assurance_light": {
-        "graph": {
-            "bgcolor": "white",
-        },
-        "node": {
-            "style": "filled,rounded",
-            "fillcolor": "#FFFFFF",
-            "color": "#555555",
-            "fontcolor": "#222222",
-        },
-        "edge": {
-            "color": "#777777",
-            "fontcolor": "#777777",
-        },
-    },
-}
-
-
-
-
 
 

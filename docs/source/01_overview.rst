@@ -3,8 +3,8 @@
 Overview
 ========
 
-This demo encodes a minimal IEC 61508 safety lifecycle thread for a SIL 2 
-Emergency Stop as structured, typed engineering artifacts using Sphinx and 
+This demo encodes a minimal IEC 61508 safety lifecycle thread for a SIL 2
+Emergency Stop as structured, typed engineering artifacts using Sphinx and
 Sphinx-Needs.
 
 The example spans:
@@ -17,13 +17,13 @@ The example spans:
 - Evidence artifacts
 - Confirmation measures
 
-Unlike conventional document-centric safety documentation, each lifecycle 
-element is represented as a typed object with explicitly declared relations. 
-Allowed artifact types and link semantics are constrained by a predefined 
+Unlike conventional document-centric safety documentation, each lifecycle
+element is represented as a typed object with explicitly declared relations.
+Allowed artifact types and link semantics are constrained by a predefined
 meta-model and validated at build time.
 
-Traceability graphs and lifecycle completeness checks are computed directly 
-from these declared relations. Missing structural links (e.g., requirement 
+Traceability graphs and lifecycle completeness checks are computed directly
+from these declared relations. Missing structural links (e.g., requirement
 without verification) are automatically detected.
 
 Scope
@@ -39,12 +39,11 @@ It does not evaluate:
 - Probabilistic calculations
 - Full safety case argumentation
 
-The purpose is to demonstrate executable lifecycle structure and automated 
+The purpose is to demonstrate executable lifecycle structure and automated
 traceability enforcement for a single SIL 2 thread.
 
-
 Meta-model
------------------
+----------
 
 The figure below defines the assurance artifact vocabulary used in the demo.
 
@@ -52,9 +51,8 @@ The figure below defines the assurance artifact vocabulary used in the demo.
    :caption: Assurance artefact meta-model (demo vocabulary). This vocabulary is enforced during build; only these link types are used in computed trace graphs and completeness checks.
    :align: center
 
-
 Workflow
------------------
+--------
 
 This section describes the intended IEC 61508 lifecycle flow for the SIL 2 Emergency Stop thread.
 
@@ -77,7 +75,7 @@ The figure below illustrates the workflow, showing the key assurance artifacts a
 Each node corresponds to a Sphinx-Needs artefact ID; each edge label corresponds to a validated link type used to generate traceability views and checks.
 
 Assurance Graph
-----------------
+---------------
 
 .. needflow::
    :root_id: HAZ_ESTOP_01
@@ -86,12 +84,3 @@ Assurance Graph
    :types: hazard,risk,sil,fsr,tsr,arch,verif,evidence,confirm
    :show_link_names:
    :root_depth: 10
-   :config: assurance_light
-
-
-
-
-
-
-
-
