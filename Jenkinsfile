@@ -14,6 +14,11 @@ pipeline {
         }
 
         stage('Deploy') {
+            when {
+                anyOf{
+                    branch 'main'
+                    }
+           } 
             steps {
                 sshPublisher(
                     continueOnError: false, 
