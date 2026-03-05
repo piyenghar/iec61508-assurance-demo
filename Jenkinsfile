@@ -13,5 +13,22 @@ pipeline {
             }
         }
 
+        stage('Deploy') {
+            steps {
+                sshPublisher(
+                    continueOnError: false, 
+                    failOnError: true,
+                    alwaysPublishFromMaster: true,
+                    publishers: [
+                        sshPublisherDesc(
+                        configName: "static_files-iecdemo",
+                        transfers: [sshTransfer(sourceFiles: 'docs/build/html/*')],
+                        verbose: true
+                        )
+                    ]
+                )
+            }
+        }
+
     }
 }
