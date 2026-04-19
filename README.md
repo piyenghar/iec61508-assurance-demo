@@ -7,8 +7,12 @@ The demo illustrates how lifecycle artifacts (hazard, risk, SIL allocation, requ
 ---
 
 ## Quick Overview
+Update: 04.2026: 
+The entire project can be visualized without building the sources:
 
-For a quick overview without building the project, see:
+1. either at the link: https://iecdemo.innotecsafety.com/ or 
+
+2. or the following pdf which is created based on the generated html files in the above link
 
 `docs/source/IEC_61508_Assurance_Demo.pdf`
 
